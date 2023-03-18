@@ -1,6 +1,6 @@
 package animal;
 
-public class Animal {
+public abstract class Animal {
     protected String especie;
     protected String genero;
     protected String habitat;
@@ -83,17 +83,6 @@ public class Animal {
         this.peso = peso;
     }
 
-    public void mostrarInformacion() {
-        System.out.println("=============================");
-        System.out.printf(
-                "Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \nAltura: %d \nEdad: %d \n",
-                this.especie,
-                this.genero,
-                this.habitat,
-                this.peso,
-                this.altura,
-                this.edad);
-        System.out.println("=============================");
-    }
+    public abstract void mostrarInformacion();
 
 }

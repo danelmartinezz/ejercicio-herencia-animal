@@ -1,6 +1,6 @@
 package animal;
 
-public class Mamifero extends Animal {
+public abstract class Mamifero extends Animal {
 
     public Mamifero() {
     }
@@ -47,19 +47,5 @@ public class Mamifero extends Animal {
         System.out.println("Me desplazo...");
     }
 
-    @Override
-    public void mostrarInformacion() {
-        System.out.println("=============================");
-        System.out.printf(
-                "Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \nAltura: %d \nEdad: %d \nAlimentacion: %s \n",
-                this.especie,
-                this.genero,
-                this.habitat,
-                this.peso,
-                this.altura,
-                this.edad,
-                this.tipoAlimentacion);
-        System.out.println("=============================");
-    }
-
+    public abstract void mostrarInformacion();
 }

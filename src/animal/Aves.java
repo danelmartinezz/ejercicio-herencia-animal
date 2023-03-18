@@ -1,6 +1,6 @@
 package animal;
 
-public class Aves extends Animal {
+public abstract class Aves extends Animal {
     protected String colorPlumaje;
     protected double longitudAlas;
     protected double alturaVuelo;
@@ -96,22 +96,5 @@ public class Aves extends Animal {
         this.alturaVuelo = alturaVuelo;
     }
 
-    @Override
-    public void mostrarInformacion() {
-        System.out.println("=============================");
-        System.out.printf(
-                "Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \nAltura: %d \nEdad: %d \nAlimentacion: %s \nColor Plumaje: %s \nLongitud Alas: %d Mts \nAltura de Vuelo: %d Mts \n",
-                this.especie,
-                this.genero,
-                this.habitat,
-                this.peso,
-                this.altura,
-                this.edad,
-                this.tipoAlimentacion,
-                this.colorPlumaje,
-                this.longitudAlas,
-                this.alturaVuelo);
-        System.out.println("=============================");
-    }
-
+    public abstract void mostrarInformacion();
 }
