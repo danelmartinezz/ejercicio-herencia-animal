@@ -1,4 +1,4 @@
-package animal;
+package animal.especies;
 
 public abstract class Peces extends Animal {
     protected String color;

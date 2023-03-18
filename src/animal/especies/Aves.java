@@ -1,4 +1,4 @@
-package animal;
+package animal.especies;
 
 public abstract class Aves extends Animal {
     protected String colorPlumaje;
@@ -97,4 +97,8 @@ public abstract class Aves extends Animal {
     }
 
     public abstract void mostrarInformacion();
+
+    public void nadar() {
+        System.out.println("Estoy nadando...");
+    }
 }
