@@ -4,31 +4,51 @@ public class Animal {
     protected String especie;
     protected String genero;
     protected String habitat;
+    protected String tipoAlimentacion;
+    protected double altura;
     protected double peso;
+    protected int edad;
 
     public Animal() {
     }
 
-    public Animal(String especie) {
-        this.especie = especie;
-    }
-
-    public Animal(String especie, String genero) {
-        this.especie = especie;
+    public Animal(String genero) {
         this.genero = genero;
     }
 
-    public Animal(String especie, String genero, String habitat) {
-        this.especie = especie;
+    public Animal(String genero, String habitat) {
         this.genero = genero;
         this.habitat = habitat;
     }
 
-    public Animal(String especie, String genero, String habitat, double peso) {
-        this.especie = especie;
+    public Animal(String genero, String habitat, String tipoAlimentacion) {
         this.genero = genero;
         this.habitat = habitat;
+        this.tipoAlimentacion = tipoAlimentacion;
+    }
+
+    public Animal(String genero, String habitat, String tipoAlimentacion, double altura) {
+        this.genero = genero;
+        this.habitat = habitat;
+        this.tipoAlimentacion = tipoAlimentacion;
+        this.altura = altura;
+    }
+
+    public Animal(String genero, String habitat, String tipoAlimentacion, double altura, double peso) {
+        this.genero = genero;
+        this.habitat = habitat;
+        this.tipoAlimentacion = tipoAlimentacion;
+        this.altura = altura;
         this.peso = peso;
+    }
+
+    public Animal(String genero, String habitat, String tipoAlimentacion, double altura, double peso, int edad) {
+        this.genero = genero;
+        this.habitat = habitat;
+        this.tipoAlimentacion = tipoAlimentacion;
+        this.altura = altura;
+        this.peso = peso;
+        this.edad = edad;
     }
 
     public String getEspecie() {
@@ -65,8 +85,14 @@ public class Animal {
 
     public void mostrarInformacion() {
         System.out.println("=============================");
-        System.out.printf("Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \n", this.especie, this.genero,
-                this.habitat, this.peso);
+        System.out.printf(
+                "Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \nAltura: %d \nEdad: %d \n",
+                this.especie,
+                this.genero,
+                this.habitat,
+                this.peso,
+                this.altura,
+                this.edad);
         System.out.println("=============================");
     }
 

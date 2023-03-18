@@ -1,67 +1,38 @@
 package animal;
 
 public class Mamifero extends Animal {
-    protected double altura;
-    protected int edad;
-    protected String tipoAlimentacion;
 
-    public Mamifero(double altura, int edad, String tipoAlimentacion) {
-        this.altura = altura;
-        this.edad = edad;
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero() {
     }
 
-    public Mamifero(String especie, double altura, int edad, String tipoAlimentacion) {
-        super(especie);
-        this.altura = altura;
-        this.edad = edad;
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero(String genero) {
+        super(genero);
+        this.especie = "Mamifero";
     }
 
-    public Mamifero(String especie, String genero, double altura, int edad, String tipoAlimentacion) {
-        super(especie, genero);
-        this.altura = altura;
-        this.edad = edad;
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero(String genero, String habitat) {
+        super(genero, habitat);
+        this.especie = "Mamifero";
     }
 
-    public Mamifero(String especie, String genero, String habitat, double altura, int edad, String tipoAlimentacion) {
-        super(especie, genero, habitat);
-        this.altura = altura;
-        this.edad = edad;
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero(String genero, String habitat, String tipoAlimentacion) {
+        super(genero, habitat, tipoAlimentacion);
+        this.especie = "Mamifero";
     }
 
-    public Mamifero(String especie, String genero, String habitat, double peso, double altura, int edad,
-            String tipoAlimentacion) {
-        super(especie, genero, habitat, peso);
-        this.altura = altura;
-        this.edad = edad;
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero(String genero, String habitat, String tipoAlimentacion, double altura) {
+        super(genero, habitat, tipoAlimentacion, altura);
+        this.especie = "Mamifero";
     }
 
-    public double getAltura() {
-        return altura;
+    public Mamifero(String genero, String habitat, String tipoAlimentacion, double altura, double peso) {
+        super(genero, habitat, tipoAlimentacion, altura, peso);
+        this.especie = "Mamifero";
     }
 
-    public void setAltura(double altura) {
-        this.altura = altura;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public String getTipoAlimentacion() {
-        return tipoAlimentacion;
-    }
-
-    public void setTipoAlimentacion(String tipoAlimentacion) {
-        this.tipoAlimentacion = tipoAlimentacion;
+    public Mamifero(String genero, String habitat, String tipoAlimentacion, double altura, double peso, int edad) {
+        super(genero, habitat, tipoAlimentacion, altura, peso, edad);
+        this.especie = "Mamifero";
     }
 
     public void alimentarse() {
@@ -74,6 +45,21 @@ public class Mamifero extends Animal {
 
     public void moverse() {
         System.out.println("Me desplazo...");
+    }
+
+    @Override
+    public void mostrarInformacion() {
+        System.out.println("=============================");
+        System.out.printf(
+                "Especie: %s \nGénero: %s \nHabitat: %s \nPeso: %d \nAltura: %d \nEdad: %d \nAlimentacion: %s \n",
+                this.especie,
+                this.genero,
+                this.habitat,
+                this.peso,
+                this.altura,
+                this.edad,
+                this.tipoAlimentacion);
+        System.out.println("=============================");
     }
 
 }
