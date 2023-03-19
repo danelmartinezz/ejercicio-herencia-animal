@@ -83,6 +83,8 @@ public abstract class Animal {
         this.peso = peso;
     }
 
-    public abstract void mostrarInformacion();
+    protected abstract void mostrarInformacion();
+
+    protected abstract void obtenerInformacionAnimal();
 
 }

@@ -1,5 +1,6 @@
 package animal;
 
+import java.io.Console;
 import java.util.Scanner;
 
 import animal.especies.Mamifero;
@@ -10,6 +11,9 @@ public class Perro extends Mamifero {
     private String comidaFavorita;
 
     Scanner in = new Scanner(System.in);
+
+    public Perro() {
+    }
 
     public Perro(String nombre, String raza, String comidaFavorita) {
         this.nombre = nombre;
@@ -87,69 +91,25 @@ public class Perro extends Mamifero {
         this.comidaFavorita = comidaFavorita;
     }
 
-    public void crearMascota() {
+    public Perro[] crearMascota() {
         System.out.print("Cuantos perros quieres obtener?: ");
         int cantidad = obtenerCantidad();
         Perro[] perros = new Perro[cantidad];
 
         for (int i = 0; i < cantidad; i++) {
-            System.out.print("Ingrese el sexo del perro: ");
-            this.genero = in.nextLine();
-            System.out.print("\nIngrese su habitat: ");
-            this.habitat = in.nextLine();
-            System.out.print("\nIngrese su tipo de alimento: ");
-            this.tipoAlimentacion = in.nextLine();
-
-            System.out.print("\nIngrese su altura: ");
-            try {
-                this.altura = Double.parseDouble(in.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingrese un numero correctamente\n");
-                crearMascota();
-            } catch (NullPointerException e) {
-                System.out.println("No ingreso nada... Intentelo de nuevo\n");
-                crearMascota();
-            }
-
-            System.out.print("\nIngrese su peso: ");
-            try {
-                this.peso = Double.parseDouble(in.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingrese un numero correctamente\n");
-                crearMascota();
-            } catch (NullPointerException e) {
-                System.out.println("No ingreso nada... Intentelo de nuevo\n");
-                crearMascota();
-            }
-
-            System.out.print("Ingrese su edad: ");
-            try {
-                this.edad = Integer.parseInt(in.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingrese un numero correctamente\n");
-                crearMascota();
-            } catch (NullPointerException e) {
-                System.out.println("No ingreso nada... Intentelo de nuevo\n");
-                crearMascota();
-            }
-
-            System.out.print("\nIngrese su nombre: ");
-            this.nombre = in.nextLine();
-            System.out.print("\nIngrese su raza: ");
-            this.raza = in.nextLine();
-            System.out.print("\nIngrese su comida favorita: ");
-            this.comidaFavorita = in.nextLine();
+            obtenerInformacionAnimal();
+            obtenerInformacionPerro();
 
             perros[i] = new Perro(this.genero, this.habitat, this.tipoAlimentacion, this.altura, this.peso, this.edad,
                     this.nombre, this.raza, this.comidaFavorita);
+
+            System.out.println();
+            Console c = System.console();
+            c.flush();
         }
 
-        for (Perro p : perros) {
-            if (p.equals(null)) {
-                continue;
-            }
-            mostrarInformacion();
-        }
+        return perros;
+
     }
 
     private int obtenerCantidad() {
@@ -164,22 +124,87 @@ public class Perro extends Mamifero {
         return cantidad;
     }
 
-    public void ladrar() {
-        System.out.println("Wau...");
+    @Override
+    public void obtenerInformacionAnimal() {
+        System.out.print("Seleccione el sexo del perro: \n1 - Macho \n2 - Hembra \n");
+        int sel = Integer.parseInt(in.nextLine());
+        switch (sel) {
+            case 1:
+                this.genero = "Macho";
+                break;
+            case 2:
+                this.genero = "Hembra";
+                break;
+            default:
+                System.out.println("Ingrese un número por favor.");
+                obtenerInformacionAnimal();
+                break;
+        }
+
+        System.out.print("Ingrese su habitat: ");
+        this.habitat = in.nextLine();
+        System.out.print("Ingrese su tipo de alimento: \n1 - Carnívoro \n2 - Herbívoro \n3 - Omnívoro \n4 - 1 y 3 \n");
+        sel = Integer.parseInt(in.nextLine());
+        switch (sel) {
+            case 1:
+                this.tipoAlimentacion = "Carnívoro";
+                break;
+            case 2:
+                this.tipoAlimentacion = "Hervíboro";
+                break;
+            case 3:
+                this.tipoAlimentacion = "Omnívoros";
+                break;
+            case 4:
+                this.tipoAlimentacion = "Carnívoro y Omnívoro";
+                break;
+            default:
+                System.out.println("Ingrese correctamente por favor.");
+                obtenerInformacionAnimal();
+                break;
+        }
+
+        System.out.print("Ingrese su altura: ");
+        try {
+            this.altura = Double.parseDouble(in.nextLine());
+            System.out.print("Ingrese su peso: ");
+            this.peso = Double.parseDouble(in.nextLine());
+            System.out.print("Ingrese su edad: ");
+            this.edad = Integer.parseInt(in.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Ingrese un numero correctamente\n");
+            crearMascota();
+        } catch (NullPointerException e) {
+            System.out.println("No ingreso nada... Intentelo de nuevo\n");
+            crearMascota();
+        }
     }
 
-    public void jugar() {
-        System.out.println("Jugando...");
+    public void obtenerInformacionPerro() {
+        System.out.print("Ingrese su nombre: ");
+        this.nombre = in.nextLine();
+        System.out.print("Ingrese su raza: ");
+        this.raza = in.nextLine();
+        System.out.print("Ingrese su comida favorita: ");
+        this.comidaFavorita = in.nextLine();
     }
 
     @Override
     public void mostrarInformacion() {
         System.out.println("=====================================");
         System.out.printf(
-                "Género: %s \nHabitat: %s \nTipo de Alimentación: %s \nAltura: %d \nPeso: %d \nEdad: %d \nNombre: %s \nRaza: %s \nComida Favorita: %s \n",
+                "Género: %s \nHabitat: %s \nTipo de Alimentación: %s \nAltura: %f mts \nPeso: %f kgs \nEdad: %d \nNombre: %s \nRaza: %s \nComida Favorita: %s \n",
                 this.genero, this.habitat, this.tipoAlimentacion, this.altura, this.peso, this.edad, this.nombre,
                 this.raza, this.comidaFavorita);
         System.out.println("=====================================");
+    }
+
+    public void ladrar() {
+        System.out.println("Wau...");
+    }
+
+    public void jugar() {
+        System.out.println("Jugando...");
     }
 
 }

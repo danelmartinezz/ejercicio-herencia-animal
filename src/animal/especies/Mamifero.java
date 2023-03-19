@@ -47,5 +47,8 @@ public abstract class Mamifero extends Animal {
         System.out.println("Me desplazo...");
     }
 
-    public abstract void mostrarInformacion();
+    protected abstract void mostrarInformacion();
+
+    protected abstract void obtenerInformacionAnimal();
+
 }
